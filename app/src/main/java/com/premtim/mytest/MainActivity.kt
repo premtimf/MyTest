@@ -7,7 +7,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.analytics.Analytics
+import com.microsoft.appcenter.crashes.Crashes
 import com.premtim.mytest.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,6 +34,11 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+
+        AppCenter.start(
+            application, "a78a6a30-190a-4c9e-a6a6-e6b54729ed51",
+            Analytics::class.java, Crashes::class.java
+        )
     }
 
     override fun onSupportNavigateUp(): Boolean {
